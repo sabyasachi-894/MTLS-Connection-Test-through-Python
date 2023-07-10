@@ -1,0 +1,22 @@
+To establish Mutual TLS (MTLS) connection between a Kotlin app and Google Cloud App Engine, you need to configure SSL/TLS on both ends—client and server.
+
+Here are the general steps to establish MTLS connection between a Kotlin app and Google Cloud App Engine:
+
+Generate SSL/TLS certificates:
+
+Generate a server certificate and private key: You can obtain a certificate from a trusted Certificate Authority (CA) or generate a self-signed certificate. For example, you can use OpenSSL to generate a self-signed certificate.
+Generate a client certificate and private key: Follow a similar process to generate a client certificate and private key.
+Configure SSL/TLS on Google Cloud App Engine:
+
+Upload the server certificate and private key to Google Cloud Platform (GCP) using the appropriate method for your deployment, such as App Engine Flexible Environment or App Engine Standard Environment.
+Configure the SSL/TLS settings on App Engine to use the uploaded server certificate.
+Configure SSL/TLS in the Kotlin app:
+
+Add the client certificate and private key to your Kotlin app.
+Configure the Kotlin app's HTTP client (e.g., OkHttp or Apache HttpClient) to use the client certificate and private key for mutual authentication.
+Ensure that the client trusts the server's certificate. If using a self-signed certificate, you may need to add the server's certificate to the client's trust store.
+Establish the MTLS connection:
+
+In your Kotlin app, make HTTP requests to the appropriate endpoint on the Google Cloud App Engine using the configured HTTP client.
+The client and server will perform the SSL/TLS handshake, verifying each other's certificates to establish the MTLS connection.
+These steps provide a high-level overview of the process. The specific implementation details may vary based on your application's requirements and the frameworks or libraries you are using. Consult the documentation for your chosen Kotlin HTTP client library and the Google Cloud documentation for more detailed instructions on configuring SSL/TLS in your specific environment.
